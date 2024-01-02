@@ -3,6 +3,7 @@ package com.projects.cowinportal.models;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,7 +17,7 @@ public class TimeSlot extends BaseModel{
     @ManyToOne
     private Hospital hospital;
     private int noOfVaccines;
-    @OneToMany
-    private List<Vaccine> vaccineList;
+    @OneToOne
+    private Vaccine vaccine;
     private Date dateTimeOfAppointment;
 }
