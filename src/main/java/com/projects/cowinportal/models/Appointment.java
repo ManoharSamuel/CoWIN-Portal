@@ -1,8 +1,6 @@
 package com.projects.cowinportal.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,6 +10,9 @@ import lombok.Setter;
 public class Appointment extends BaseModel{
     @OneToOne
     private User user;
+    private long referenceNumber;
+    @Enumerated(value = EnumType.ORDINAL)
+    private AppointmentStatus appointmentStatus;
     @ManyToOne
     private TimeSlot timeSlot;
 }
