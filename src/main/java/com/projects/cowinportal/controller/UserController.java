@@ -3,8 +3,12 @@ package com.projects.cowinportal.controller;
 import com.projects.cowinportal.dto.BookAppointmentRequestDTO;
 import com.projects.cowinportal.dto.BookAppointmentResponseDTO;
 import com.projects.cowinportal.models.Appointment;
+import com.projects.cowinportal.models.Vaccine;
 import com.projects.cowinportal.service.UserService;
+import com.projects.cowinportal.strategies.Availability.SearchType;
 import org.springframework.stereotype.Controller;
+
+import java.util.List;
 
 @Controller
 public class UserController {
@@ -23,5 +27,9 @@ public class UserController {
 
     public boolean cancelAppointment(long referenceNumber) {
         return userService.cancelAppointment(referenceNumber);
+    }
+
+    public List<Vaccine> searchVaccines(SearchType searchType) {
+        return userService.searchVaccines(searchType);
     }
 }
