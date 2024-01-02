@@ -1,11 +1,6 @@
 package com.projects.cowinportal.service;
 
-import com.projects.cowinportal.dto.BookAppointmentRequestDTO;
-import com.projects.cowinportal.dto.BookAppointmentResponseDTO;
-import com.projects.cowinportal.models.Appointment;
-import com.projects.cowinportal.models.TimeSlot;
-import com.projects.cowinportal.models.User;
-import com.projects.cowinportal.models.Vaccine;
+import com.projects.cowinportal.models.*;
 import com.projects.cowinportal.strategies.Availability.SearchForAvailability;
 import com.projects.cowinportal.strategies.Availability.SearchForAvailabilityFactory;
 import com.projects.cowinportal.strategies.Availability.SearchForAvailabilityStrategy;
@@ -24,11 +19,30 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public Appointment bookAppointment(User user, TimeSlot timeSlot) {
+        Appointment appointment = new Appointment();
+        initialNotification(appointment);
+        reminderNotification(appointment);
         return null;
     }
 
     @Override
     public boolean cancelAppointment(long referenceNumber) {
         return false;
+    }
+
+    @Override
+    public Notification initialNotification(Appointment appointment) {
+        Notification notification = new Notification();
+        notification.setAppointment(appointment);
+        notification.setMessage("Vaccine appointment is schedule for "+appointment.getTimeSlot());
+        return notification;
+    }
+
+    @Override
+    public Notification reminderNotification(Appointment appointment) {
+        Notification notification = new Notification();
+        notification.setAppointment(appointment);
+        notification.setMessage("Reminder! Vaccine appointment is schedule for today");
+        return notification;
     }
 }
