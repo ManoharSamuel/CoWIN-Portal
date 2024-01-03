@@ -5,6 +5,10 @@ import com.projects.cowinportal.strategies.Availability.SearchForAvailability;
 import com.projects.cowinportal.strategies.Availability.SearchForAvailabilityFactory;
 import com.projects.cowinportal.strategies.Availability.SearchForAvailabilityStrategy;
 import com.projects.cowinportal.strategies.Availability.SearchType;
+import com.projects.cowinportal.strategies.UserLogin.LoginType;
+import com.projects.cowinportal.strategies.UserLogin.UserLogin;
+import com.projects.cowinportal.strategies.UserLogin.UserLoginFactory;
+import com.projects.cowinportal.strategies.UserLogin.UserLoginStrategy;
 
 import java.util.List;
 
@@ -44,5 +48,17 @@ public class UserServiceImpl implements UserService{
         notification.setAppointment(appointment);
         notification.setMessage("Reminder! Vaccine appointment is schedule for today");
         return notification;
+    }
+
+    @Override
+    public boolean login(LoginType loginType, String loginId, String otp) {
+        UserLogin userLogin = UserLoginFactory.getUserLogin(loginType);
+        UserLoginStrategy userLoginStrategy = new UserLoginStrategy(userLogin);
+        return userLoginStrategy.login(loginId);
+    }
+
+    @Override
+    public void signUp(String name, String email, String phoneNumber, String aadhaarNumber) {
+
     }
 }
