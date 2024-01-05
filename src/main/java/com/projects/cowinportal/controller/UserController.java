@@ -9,6 +9,7 @@ import com.projects.cowinportal.models.Vaccine;
 import com.projects.cowinportal.service.UserService;
 import com.projects.cowinportal.strategies.Availability.SearchType;
 import com.projects.cowinportal.strategies.UserLogin.LoginType;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import java.util.List;
@@ -17,6 +18,7 @@ import java.util.List;
 public class UserController {
     private final UserService userService;
 
+    @Autowired
     public UserController(UserService userService) {
         this.userService = userService;
     }

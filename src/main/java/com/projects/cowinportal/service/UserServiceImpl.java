@@ -9,9 +9,11 @@ import com.projects.cowinportal.strategies.UserLogin.LoginType;
 import com.projects.cowinportal.strategies.UserLogin.UserLogin;
 import com.projects.cowinportal.strategies.UserLogin.UserLoginFactory;
 import com.projects.cowinportal.strategies.UserLogin.UserLoginStrategy;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class UserServiceImpl implements UserService{
 
     @Override
